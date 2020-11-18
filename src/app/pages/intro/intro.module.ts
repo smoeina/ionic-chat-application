@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { IntroPageRoutingModule } from './intro-routing.module';
 
 import { IntroPage } from './intro.page';
+import {SocketService} from "../../socket.service";
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { IntroPage } from './intro.page';
   exports: [
     IntroPage
   ],
-  declarations: [IntroPage]
+  declarations: [IntroPage],
 })
 export class IntroPageModule {}

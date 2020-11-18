@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {Socket} from "ngx-socket-io";
+import {SocketService} from "../../socket.service";
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginPage implements OnInit {
       private router: Router,
       private loadingController: LoadingController,
       private socket: Socket,
+      private so:SocketService
   ) {}
     async SuccessAlert() {
         const alert = await this.alertController.create({
@@ -43,7 +45,10 @@ export class LoginPage implements OnInit {
         await alert.present();
     }
   ngOnInit() {
-    this.socket.connect()
+      console.log("This is Username:")
+      console.log(this.so.get_username())
+
+      this.socket.connect()
     this.credentials = this.fb.group({
       username: ['UserName'],
     });

@@ -4,6 +4,7 @@ import {AlertController} from "@ionic/angular";
 @Injectable({
   providedIn: 'root'
 })
+
 export class SocketService {
   username :string;
   socket :Socket;
@@ -17,6 +18,9 @@ export class SocketService {
 
   set_username(username){
     this.username = username
+  }
+  get_username(){
+    return this.username
   }
   // async login(alertController: AlertController,) {
   //   this.socket.emit("Register",this.user,(data)=>{

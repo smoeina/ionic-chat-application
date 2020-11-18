@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 import { Animation, AnimationController } from '@ionic/angular';
+import {SocketService} from "../../socket.service";
 
 @Component({
   selector: 'app-intro',
@@ -13,13 +14,14 @@ import { Animation, AnimationController } from '@ionic/angular';
 
 export class IntroPage implements OnInit {
   @ViewChild(IonSlides)slides: IonSlides;
-  constructor(private router: Router) {
+  constructor(private router: Router,private so:SocketService) {
 
   }
 
   ngOnInit() {
 
-
+    this.so.set_username("Moein")
+    console.log("Moein Setted for username")
   }
 
   next() {
