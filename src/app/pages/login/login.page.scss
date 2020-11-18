@@ -1,0 +1,36 @@
+
+ion-content {
+  --backgoround-color: #353535;
+  --padding-top: 40%;
+  --padding-start: 10%;
+  --padding-end: 10%;
+}
+
+.input-group {
+  background: #353535;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+#background_content {
+  --backgoround-color: #353535;
+
+}
+.errors {
+  font-size: small;
+  color: #b3b3b3;
+  background: var(--ion-color-danger);
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+ion-toolbar{
+  background-color: #2dd36f;
+}
+ion-button{
+  text-decoration-color: #07100b;
+
+}
+.my-custom-class .alert-wrapper {
+  direction:rtl;
+}

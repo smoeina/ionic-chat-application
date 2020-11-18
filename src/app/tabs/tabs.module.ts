@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TabsPageRoutingModule } from './tabs-routing.module';
 
 import { TabsPage } from './tabs.page';
+import {Socket} from "ngx-socket-io";
 
 @NgModule({
   imports: [
@@ -16,4 +17,8 @@ import { TabsPage } from './tabs.page';
   ],
   declarations: [TabsPage]
 })
-export class TabsPageModule {}
+export class TabsPageModule {
+  constructor(private socket: Socket) {
+  }
+
+}

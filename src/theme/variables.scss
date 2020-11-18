@@ -1,10 +1,15 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
-
+@font-face {
+  font-family: AppFont;
+  src: url("../assets/fonts/IRANSansWeb.woff2"); //change url accordingly
+}
 /** Ionic CSS Variables **/
 :root {
+  $app-direction: rtl;
+  --ion-font-family: 'AppFont';
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #38ff92;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -81,8 +86,9 @@
    * Dark Colors
    * -------------------------------------------
    */
-
+  $app-direction: multi;
   body {
+    $app-direction: multi;
     --ion-color-primary: #428cff;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;

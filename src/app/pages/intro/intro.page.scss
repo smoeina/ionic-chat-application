@@ -1,0 +1,89 @@
+
+ion-content {
+  --background: #353535;
+}
+
+ion-slides {
+  height: 100%;
+  --bullet-background-active: #efe918;
+  --bullet-background: #000;
+}
+h1{
+  color: #E9C46A;
+  font-weight: bold;
+  font-size: 16px;
+}
+h2{
+  color: #E9C46A;
+}
+p{
+  color: #E9C46A;
+  font-size: 14px;
+}
+ion-button{
+  color: #ef9c14;
+  margin-bottom: 20%;
+}
+#img1{
+  height: 50% !important;
+  width: auto !important;
+}
+ion-list{
+  backface-visibility: hidden;
+  background-blend-mode: screen;
+}
+ion-item{
+  backface-visibility: hidden;
+}
+#img3{
+  height: auto !important;
+  width: 50% !important;
+  margin-top: 20%;
+  animation: moveWithTransform 2s linear infinite;
+}
+#img2{
+
+  animation: moveWithTransform 5s linear infinite;
+
+}
+.neveshtes{
+  animation: Phone 8s linear infinite;
+
+}
+@keyframes moveWithTransform {
+  0%{
+    transform:
+               perspective(30px);
+  }
+  25%{
+    transform: translate3d(5px,5px,5px);
+  }
+  50%{
+    transform: translate3d(5px,10px,0px);
+  }
+  75%{
+    transform: translate3d(-5px,5px,5px);
+  }
+  100%{
+    transform: translate3d(0,0,0);
+  }
+  
+}
+@keyframes Phone {
+  0%{
+    transform: perspective(30px);
+  }
+  25%{
+    transform: translate3d(1px,0px,1px);
+  }
+  50%{
+    transform: perspective(40px);
+  }
+  75%{
+    transform: translate3d(-1px,0px,1px);
+  }
+  100%{
+    transform: perspective(0px);
+  }
+
+}

@@ -1,0 +1,18 @@
+<ion-header dir="rtl">
+  <ion-toolbar>
+    <ion-title>پیامرسان :)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content dir="rtl">
+  <ion-label dir="rtl">نام کاربری</ion-label>
+  <form (ngSubmit)="login()" dir="ltr">
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="username" [(ngModel)]="user" [ngModelOptions]="{standalone: true}"></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">ورود</ion-button>
+  </form>
+</ion-content>
