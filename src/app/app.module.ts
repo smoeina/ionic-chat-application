@@ -9,12 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {SocketIoModule,SocketIoConfig } from "ngx-socket-io";
-import {UserComponent} from "./user/user.component";
 import { HttpClientModule } from '@angular/common/http';
 import {IntroPageModule} from "./pages/intro/intro.module";
+import {AutosizeModule} from 'ngx-autosize'
+
 const config: SocketIoConfig = { url: 'http://localhost:5000/', options: {} };
 @NgModule({
-  declarations: [AppComponent,UserComponent],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -28,6 +29,7 @@ const config: SocketIoConfig = { url: 'http://localhost:5000/', options: {} };
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
   ],
   bootstrap: [AppComponent],
 })

@@ -6,22 +6,22 @@ import {Socket} from "ngx-socket-io";
 import {SocketService} from "../../socket.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+    selector: 'app-login',
+    templateUrl: './login.page.html',
+    styleUrls: ['./login.page.scss'],
 })
 
 export class LoginPage implements OnInit {
-  credentials: FormGroup;
-  user :any;
-  constructor(
-      private fb: FormBuilder,
-      private alertController: AlertController,
-      private router: Router,
-      private loadingController: LoadingController,
-      private socket: Socket,
-      private so:SocketService
-  ) {}
+    credentials: FormGroup;
+    user :any;
+    constructor(
+        private fb: FormBuilder,
+        private alertController: AlertController,
+        private router: Router,
+        private loadingController: LoadingController,
+        private socket: Socket,
+        private socket_holder:SocketService
+    ) {}
     async SuccessAlert() {
         const alert = await this.alertController.create({
             cssClass: 'my-custom-class',
@@ -44,40 +44,41 @@ export class LoginPage implements OnInit {
 
         await alert.present();
     }
-  ngOnInit() {
-      console.log("This is Username:")
-      console.log(this.so.get_username())
+    ngOnInit() {
+        this.socket.connect()
+        this.socket_holder.set_socket(this.socket)
+        this.credentials = this.fb.group({
+            username: ['UserName'],
+        });
+    }
 
-      this.socket.connect()
-    this.credentials = this.fb.group({
-      username: ['UserName'],
-    });
-  }
+    async login() {
+        this.socket.emit("Login",this.user,(data)=>{
+            //console.log(data)
+            // this.router.navigateByUrl('/tabs', {replaceUrl: true});
+        })
+        this.socket.on("Login",(data)=> {
+            console.log(data)
+            if (data == "Success"){
+                console.log("Socket Holder user set to")
+                console.log(this.user)
+                this.socket_holder.set_username(this.user)
+                this.SuccessAlert()
+                this.router.navigateByUrl('/tabs', {replaceUrl: true});
 
-  async login() {
-      this.socket.emit("Register",this.user,(data)=>{
-          //console.log(data)
-          // this.router.navigateByUrl('/tabs', {replaceUrl: true});
-      })
-      this.socket.on("Register",(data)=> {
-          console.log(data)
-          if (data == "Success"){
-              this.SuccessAlert()
-              this.router.navigateByUrl('/tabs', {replaceUrl: true});
+            }
+            else if(data == "Failed")    {
+                this.FailedAlert()
+            }
+        })
+        console.log(this.user)
+        return
+    }
 
-      }
-      else if(data == "Failed")    {
-              this.FailedAlert()
-          }
-      })
-      console.log(this.user)
-      return
-  }
-
-  // Easy access for form fields
-  get username() {
-    return this.credentials.get('username');
-  }
+    // Easy access for form fields
+    get username() {
+        return this.credentials.get('username');
+    }
 
 
 }

@@ -7,13 +7,13 @@ import {AlertController} from "@ionic/angular";
 
 export class SocketService {
   username :string;
-  socket :Socket;
-  constructor() {
+  message_to:string;
+  constructor(private socket:Socket) {
 
   }
-  connect_socket(){
-    this.socket.connect()
-    console.log("Socket Connected")
+
+  set_socket(socket){
+    this.socket = socket;
   }
 
   set_username(username){
@@ -22,23 +22,13 @@ export class SocketService {
   get_username(){
     return this.username
   }
-  // async login(alertController: AlertController,) {
-  //   this.socket.emit("Register",this.user,(data)=>{
-  //     //console.log(data)
-  //     // this.router.navigateByUrl('/tabs', {replaceUrl: true});
-  //   })
-  //   this.socket.on("Register",(data)=> {
-  //     console.log(data)
-  //     if (data == "Success"){
-  //       this.SuccessAlert()
-  //       this.router.navigateByUrl('/tabs', {replaceUrl: true});
-  //
-  //     }
-  //     else if(data == "Failed")    {
-  //       this.FailedAlert()
-  //     }
-  //   })
-  //   console.log(this.user)
-  //   return}
-
+  get_socket(){
+    return this.socket
+  }
+  set_send_message_to_user(user){
+    this.message_to = user;
+  }
+  get_send_message_to_user(){
+    return this.message_to;
+  }
 }
