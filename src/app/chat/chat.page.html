@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{message_to}}</ion-title>
+      <ion-label slot="start" (click)="backClick()"> <ion-icon name="arrow-back-outline"></ion-icon></ion-label>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let payam of messages">
+      <ion-col col-9 *ngIf="payam.message_from === payam.message_from" class="message" [ngClass]="{'mymessage': payam.message_from === this.get_socket_holder().username, 'othermessage': payam.message_to===this.get_socket_holder().username}">
+        <span class="user_name">{{payam.message_from}}</span>
+        <br>
+        <span>{{payam.message}}</span>
+        <div class="time">{{payam.date}}</div>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
+<ion-item>
+  <ion-label>Message:</ion-label>
+  <ion-textarea clearOnEdit="true" #message></ion-textarea>
+  <ion-button (click)="click_on_send(message.value)" expand="full">Send</ion-button>
+</ion-item>
