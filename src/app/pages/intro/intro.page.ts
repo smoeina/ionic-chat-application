@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
 import {SocketService} from "../../socket.service";
-import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 @Component({
   selector: 'app-intro',
@@ -14,14 +13,11 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 
 export class IntroPage implements OnInit {
   @ViewChild(IonSlides)slides: IonSlides;
-  constructor(private router: Router,private fileChooser: FileChooser) {
+  constructor(private router: Router) {
 
   }
 
   ngOnInit() {
-    this.fileChooser.open()
-        .then(uri => console.log(uri))
-        .catch(e => console.log(e));
   }
 
   next() {

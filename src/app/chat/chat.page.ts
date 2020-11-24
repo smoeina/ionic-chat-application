@@ -57,11 +57,13 @@ export class ChatPage implements OnInit {
           {
             'message_from': this.message_from,
             'message_to': this.message_to,
-            'message': message,
+            'message': message.value,
               'date':this.now.getHours()+":"+this.now.getMinutes()
           }
       )
-      this.socket_holder.get_socket().emit("SendMessage", this.message_from,this.message_to,message);
+
+      this.socket_holder.get_socket().emit("SendMessage", this.message_from,this.message_to,message.value);
+      message.value = "";
   }
   get_socket_holder(){
     return this.socket_holder
